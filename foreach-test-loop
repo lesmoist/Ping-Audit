@@ -1,0 +1,8 @@
+$regex = ''
+foreach($line in Get-Content -Path .\table.txt) 
+{
+    if($line -match $regex)
+    {
+        Get-SubnetAddresses $line.ToString() | Get-IPRange | Select -ExpandProperty IPAddressToString > IPAddr.txt
+    }
+}
